@@ -5,9 +5,12 @@ import emailIcon from "../assets/icons/emailIcon.svg";
 import passIcon from "../assets/icons/passIcon.svg";
 import Loader from '../components/Loader';
 import { signupSchema } from '../schemas/signup.schema';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import notShowPassIcon from "../assets/icons/notShowPassIcon.svg";
 import showPassIcon from "../assets/icons/showPassIcon.svg";
+import { useUser } from '../../hooks/useUser';
+import { LoginInterface } from '../../interfaces/user.interface';
+import { AuthContext } from '../context/AuthContext';
 
 type ShowPassword = {
     onclick: () => void,
@@ -45,10 +48,21 @@ interface FromProps {
 }
 export const Signup = ({ changeForm }:FromProps) => {
 
+    const { logIn: logInFunc } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
+    const { createUser } = useUser();
 
     const handleClick = () => {
         setShowPass(!showPass);
+    };
+
+    const handleCreate = async(payload: FormValues) => {
+        const user = await createUser(payload);
+        if("success" in user){
+            logInFunc(payload.email, payload.password);
+        } else {
+            alert("Error");
+        }
     };
 
     const formik = useFormik({
@@ -57,8 +71,7 @@ export const Signup = ({ changeForm }:FromProps) => {
         onSubmit: (values: FormValues, actions: any) => {
 
             setTimeout(()=>{
-                // logInFunc(email, password);
-                console.log(values);
+                handleCreate(values);
                 actions.setSubmitting(false);
             }, 500);
         

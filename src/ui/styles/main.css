@@ -21,7 +21,6 @@ html,body {
 }
   
 .main-section {
-width: calc(100% - 250px);
-/* height: 100%; */
-/* width: 100vw; */
+    width: calc(100% - 250px);
+    height: 100vh;
 }

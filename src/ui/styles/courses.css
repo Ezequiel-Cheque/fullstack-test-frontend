@@ -1,0 +1,12 @@
+
+.course-section {
+    width: 100%;
+    height: calc(100% - 60px);
+    overflow-y: scroll;
+}
+
+.courses-content {
+    width: 95%;
+    background-color: #fff;
+    margin: 50px auto;
+}

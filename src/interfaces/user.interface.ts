@@ -3,8 +3,15 @@ export interface UserEntity {
     lastname: string;
     email: string;
     password: string;
-    stripe_customer_id: string;
+    id: string;
     token?: string;
+}
+
+export interface CreateUser {
+    email: string;
+    password: string;
+    name: string;
+    lastname: string;
 }
 
 export interface LoginInterface {
@@ -25,6 +32,14 @@ export interface LoginResponse {
     message: string;
     payload: {
         token: string,
+        user: UserEntity
+    }
+}
+
+export interface CreateResponse {
+    success: boolean;
+    message: string;
+    payload: {
         user: UserEntity
     }
 }

@@ -26,7 +26,6 @@ export const AuthProvider = ({ children }: Props) => {
 
     const logIn = async (email: string, password: string) => {
         const response = await logInUser({ email, password });
-        console.log(response);
         if ("success" in response) {
             const user = {
                 ...response.payload.user,
