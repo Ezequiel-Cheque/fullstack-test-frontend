@@ -37,7 +37,6 @@ const CheckoutForm = ({amount, description, currency, course_id, handleSuccess}:
         course_id
       };
       const transaction = await createTransaction(payload);
-      console.log(transaction);
       if ("success" in transaction) {
         handleSuccess();
         setSubmit(false);
@@ -66,7 +65,7 @@ const CheckoutForm = ({amount, description, currency, course_id, handleSuccess}:
         Swal.fire({
           icon: "error",
           title: "Error ataching the payment method",
-          text: JSON.stringify(attach.detail.errors)
+          text: JSON.stringify(attach.detail.message)
         });
         setSubmit(false);
       }
