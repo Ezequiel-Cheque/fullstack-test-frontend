@@ -1,0 +1,4 @@
+export const envs = {
+    API_URL: import.meta.env.VITE_API_URL,
+    STRIPE_KEY: import.meta.env.VITE_STRIPE_KEY
+}

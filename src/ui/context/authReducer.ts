@@ -1,4 +1,4 @@
-import { UserContextType, UserEntity } from "../../interfaces/user";
+import { UserContextType, UserEntity } from "../../interfaces/user.interface";
 
 
 type AuthAction = 

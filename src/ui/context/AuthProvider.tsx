@@ -1,13 +1,16 @@
+import Swal from 'sweetalert2';
 import { ReactNode, useReducer } from "react";
+
 import { AuthContext, initialUser } from "./AuthContext";
 import { authReducer } from "./authReducer";
-
-
+import { useUser } from "../../hooks/useUser";
 
 interface Props {
     children?: ReactNode
 }
 export const AuthProvider = ({ children }: Props) => {
+
+    const { logInUser } = useUser();
 
     const init = () => {
         const user = JSON.parse( localStorage.getItem('user') || "{}");
@@ -22,20 +25,23 @@ export const AuthProvider = ({ children }: Props) => {
     const [ authState, dispatch ] = useReducer(authReducer, initialUser, init);
 
     const logIn = async (email: string, password: string) => {
-        console.log({email, password});
-        // const loginData = await login({email, password});
-        // if (loginData.success) {
-        //     localStorage.setItem('user', JSON.stringify(loginData.payload));
-        //     dispatch({ type: "login", payload: loginData.payload });
-        // } else {
-        //     toast({
-        //         title: "Usuario incorrecto!!",
-        //         description: "Los datos proporcionados no corresponden a un usuario valido",
-        //         className: "bg-red-600 text-zinc-50"
-        //     });
-        // }
+        const response = await logInUser({ email, password });
+        console.log(response);
+        if ("success" in response) {
+            const user = {
+                ...response.payload.user,
+                token: response.payload.token
+            }
+            localStorage.setItem('user', JSON.stringify(user));
+            dispatch({ type: "login", payload: user });
+        } else {
+            Swal.fire({
+                icon: "Error",
+                title: "User not found",
+                text: "User not registered, check your data"
+            });
+        }
     }
-
 
     const logOut = () => {
         localStorage.removeItem('user');

@@ -8,9 +8,7 @@ type PostHttp = {
 export interface HttpInterface {
     get(url: string, headers: object): Promise<any>;
     post(data: PostHttp): Promise<any>;
-    postImage(data: PostHttp): Promise<any>;
     put(data: PostHttp): Promise<any>;
-    delete(url: string, headers: object): Promise<any>;
 };
 
 export interface backendService404 {
