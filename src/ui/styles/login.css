@@ -1,0 +1,124 @@
+/* login page */
+.section-login {
+    background-color: #111827;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+@tailwind base;
+@tailwind components;
+
+.form-login {
+    flex-direction: column;
+    display: flex;
+    height: 512px;
+    margin: auto;
+    width: 450px;
+    justify-content: space-between;
+}
+
+.form-login form {
+    padding: 15px 25px;
+}
+
+.form-login form > label {
+    color: #fff;
+    float: right;
+    display: block;
+    @apply ms-2;
+    @apply text-sm;
+    @apply font-medium;
+}
+
+.form-login form > label:hover {
+    cursor: pointer;
+}
+
+.form-login > img {
+    display: block;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    margin: 0 auto;
+}
+
+
+.form-login form {
+    width: 100%;
+}
+
+.form-login-input {
+    color: #fff;
+    padding-left: 30px;
+
+    @apply block;
+    @apply py-2.5;
+    /* @apply px-30; */
+    @apply w-full;
+    @apply bg-transparent;
+    @apply border-0;
+    @apply border-b-2;
+    @apply border-gray-300;
+    @apply appearance-none;
+    @apply dark:text-white;
+    @apply dark:border-gray-600;
+    @apply dark:focus:border-blue-500;
+    @apply focus:outline-none;
+    @apply focus:ring-0;
+    @apply focus:border-blue-600;
+}
+
+.form-login-input-div {
+    @apply relative;
+    @apply z-0;
+    @apply w-full;
+    @apply mb-5;
+}
+
+.form-login-label {
+    font-weight: 400;
+    color: #fff;
+    margin-left: 30px;
+    @apply peer-focus:font-medium absolute;
+    @apply duration-300;
+    @apply transform;
+    @apply -translate-y-6;
+    @apply scale-75;
+    @apply top-3;
+    @apply -z-10;
+    @apply origin-[0];
+    @apply peer-focus:start-0;
+    @apply rtl:peer-focus:translate-x-1/4;
+    @apply rtl:peer-focus:left-auto;
+    @apply peer-focus:text-blue-600;
+    @apply peer-focus:dark:text-blue-500;
+    @apply peer-placeholder-shown:scale-100;
+    @apply peer-placeholder-shown:translate-y-0;
+    @apply peer-focus:scale-75;
+    @apply peer-focus:-translate-y-6;
+}
+
+
+.form-login form button {
+    width: 200px;
+    display: block;
+    margin: auto;
+    margin-top: 55px;
+    background-color: rgba(44, 44, 44, 0.9);
+    border-radius: 16px;
+    @apply hover:bg-gray-600;
+    @apply text-white;
+    @apply font-bold;
+    @apply py-3;
+    @apply px-4;
+}
+
+.form-loader {
+    width: 70px;
+    display: block;
+    margin: auto;
+    margin-top: 55px;
+}
